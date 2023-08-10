@@ -24,7 +24,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Solution URL: [https://www.frontendmentor.io/solutions/advice-generator-app-6XvYP_qHG9](https://www.frontendmentor.io/solutions/advice-generator-app-6XvYP_qHG9)
 - Live Site URL: [https://soulrvr29.github.io/advice-generator-app/](https://soulrvr29.github.io/advice-generator-app/)
 
 ### Built with

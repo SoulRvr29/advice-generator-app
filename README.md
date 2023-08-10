@@ -37,8 +37,6 @@ Users should be able to:
 - [React](https://reactjs.org/) - JS library
 - [Tailwind](https://tailwindcss.com/) - CSS framework
 
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
-
 ## Author
 
 - Frontend Mentor - [@SoulRvr29](https://www.frontendmentor.io/profile/SoulRvr29)

@@ -5,8 +5,9 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 function App() {
-  const [advice, changeAdvice] = useState("");
-  const [number, changeNumber] = useState("");
+  const [advice, setAdvice] = useState({});
+  const adviceContent = advice.advice;
+  const adviceId = advice.id;
 
   useEffect(() => {
     clickHandler();
@@ -23,9 +24,7 @@ function App() {
       })
 
       .then((data) => {
-        console.log(data.slip.advice);
-        changeAdvice((oldAdvice) => (oldAdvice = data.slip.advice));
-        changeNumber((oldNumber) => (oldNumber = data.slip.id));
+        setAdvice(data.slip);
       })
 
       .catch((err) => {
@@ -37,9 +36,9 @@ function App() {
     <main className="w-full grid place-content-center min-h-screen bg-Dark-Blue text-Light-Cyan text-center font-manrope font-bold">
       <section className="bg-Dark-Grayish-Blue max-w-[540px] px-12 pb-16 pt-12 mx-4 rounded-xl grid  justify-items-center gap-7 relative max-sm:px-8">
         <h1 className="max-sm:text-[9px] max-sm:tracking-[4px] text-[10px] text-Neon-Green tracking-[5px]">
-          ADVICE #{number}
+          ADVICE #{adviceId}
         </h1>
-        <p className="text-[26px] max-sm:text-[22px]">{advice}</p>
+        <p className="text-[26px] max-sm:text-[22px]">{adviceContent}</p>
         <img
           className="max-[500px]:hidden block"
           src={patternDesktop}

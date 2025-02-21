@@ -1,13 +1,22 @@
 import patternMobile from "./assets/pattern-divider-mobile.svg";
 import patternDesktop from "./assets/pattern-divider-desktop.svg";
 import iconDice from "./assets/icon-dice.svg";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useReducer, useEffect } from "react";
+
+function reducer(state, action) {
+  switch (action.type) {
+    case "setAdvice":
+      return {
+        advice: action.payload.advice,
+        id: action.payload.id,
+      };
+  }
+}
+
+const initialState = { advice: "", id: 0 };
 
 function App() {
-  const [advice, setAdvice] = useState({});
-  const adviceContent = advice.advice;
-  const adviceId = advice.id;
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
     clickHandler();
@@ -24,7 +33,7 @@ function App() {
       })
 
       .then((data) => {
-        setAdvice(data.slip);
+        dispatch({ type: "setAdvice", payload: data.slip });
       })
 
       .catch((err) => {
@@ -36,9 +45,9 @@ function App() {
     <main className="w-full grid place-content-center min-h-screen bg-Dark-Blue text-Light-Cyan text-center font-manrope font-bold">
       <section className="bg-Dark-Grayish-Blue max-w-[540px] px-12 pb-16 pt-12 mx-4 rounded-xl grid  justify-items-center gap-7 relative max-sm:px-8">
         <h1 className="max-sm:text-[9px] max-sm:tracking-[4px] text-[10px] text-Neon-Green tracking-[5px]">
-          ADVICE #{adviceId}
+          ADVICE #{state.id}
         </h1>
-        <p className="text-[26px] max-sm:text-[22px]">{adviceContent}</p>
+        <p className="text-[26px] max-sm:text-[22px]">{state.advice}</p>
         <img
           className="max-[500px]:hidden block"
           src={patternDesktop}
